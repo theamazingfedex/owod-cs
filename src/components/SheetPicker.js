@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import initialState from '../components/demon/DemonInitialState';
+import demonInitialState from '../components/demon/DemonInitialState';
 import DemonTheFallen from '../containers/character-sheets/DemonTheFallen';
+import { demonLocalStorageId } from './common/LocalStorageIds';
 
 
 export default class SheetPicker extends Component {
@@ -11,13 +12,23 @@ export default class SheetPicker extends Component {
     this.onSelectChange = this.onSelectChange.bind(this);
     this.getSelectOptions = this.getSelectOptions.bind(this);
     this.demonStateCallback = this.demonStateCallback.bind(this);
+    this.loadSheetStatesFromLocalStorage = this.loadSheetStatesFromLocalStorage.bind(this);
     this.state = {
-      savedDemonState: initialState
+      savedDemonState: demonInitialState,
     };
   }
 
   componentWillMount() {
     this.setState({selectedValue: this.getSelectOptions()[0]});
+    this.loadSheetStatesFromLocalStorage();
+  }
+
+  loadSheetStatesFromLocalStorage() {
+    console.log('loading sheets from local storage...');
+    const loadedDemonState = JSON.parse(localStorage.getItem(demonLocalStorageId)) || demonInitialState;
+    this.setState({
+      savedDemonState: loadedDemonState
+    });
   }
 
   getSelectOptions() {
@@ -33,12 +44,12 @@ export default class SheetPicker extends Component {
   onSelectChange(value) {
     if (value.length == 0) return;
     this.setState({selectedValue: value});
-    console.log('selectedValue: ', value);
+    this.loadSheetStatesFromLocalStorage();
   }
+
   demonStateCallback(state) {
-    console.log('savingState: ', state);
+    localStorage.setItem(demonLocalStorageId, JSON.stringify(state));
     this.setState({ savedDemonState: state });
-    console.log('demonStateCallbackThis.State: ', this.state);
   }
 
   render() {

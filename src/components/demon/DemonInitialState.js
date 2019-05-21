@@ -1,4 +1,4 @@
-const initialState = {
+const demonInitialState = {
   character: {
     name: '',
     player: '',
@@ -90,4 +90,4 @@ const initialState = {
   experience: 0,
   inventory: []
 }
-export default initialState;
+export default demonInitialState;

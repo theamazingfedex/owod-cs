@@ -11,6 +11,8 @@ import Concept from '../../components/demon/Concept';
 import House from '../../components/demon/House';
 import Faction from '../../components/demon/Faction';
 import Visage from '../../components/demon/Visage';
+import ClearLocalStorageButton from '../../components/common/ClearLocalStorageButton';
+import { demonLocalStorageId } from '../../components/common/LocalStorageIds';
 
 class DemonTheFallen extends Component {
   constructor(props) {
@@ -18,13 +20,16 @@ class DemonTheFallen extends Component {
 
     this.state = this.props.seedState;
   }
+
   componentWillUpdate(props, state) {
     this.props.saveStateCallback(state);
   }
+
   render() {
     return (
       <div className='character-sheet demon'>
         <h2>Demon the Fallen</h2>
+        <ClearLocalStorageButton displayValue='Clear Character Sheet' localStorageId={demonLocalStorageId} />
         <div className='basic-info'>
           <div className='col col1'>
             <LabelInput displayLabel='Name' onChangedCallback={value => this.setState({character: {...this.state.character, name: value}})} initialValue={this.state.character.name}/>
@@ -74,6 +79,6 @@ class DemonTheFallen extends Component {
 
 DemonTheFallen.propTypes = {
   seedState: PropTypes.object.isRequired,
-  saveStateCallback: PropTypes.func.isRequired,
+  saveStateCallback: PropTypes.func.isRequired
 }
 export default DemonTheFallen;
