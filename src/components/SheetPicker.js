@@ -10,6 +10,7 @@ export default class SheetPicker extends Component {
 
     this.onSelectChange = this.onSelectChange.bind(this);
     this.getSelectOptions = this.getSelectOptions.bind(this);
+    this.demonStateCallback = this.demonStateCallback.bind(this);
     this.state = {
       savedDemonState: initialState
     };
@@ -21,7 +22,7 @@ export default class SheetPicker extends Component {
 
   getSelectOptions() {
     return [
-      { 'value': 1, 'label': 'Demon the Fallen', component: <DemonTheFallen saveStateCallback={(stateToSave) => this.state.savedDemonState = stateToSave} seedState={this.state.savedDemonState} /> },
+      { 'value': 1, 'label': 'Demon the Fallen', component: <DemonTheFallen saveStateCallback={this.demonStateCallback} seedState={this.state.savedDemonState} /> },
       { 'value': 2, 'label': 'Mage the Ascension', component: <p>Mage</p> },
       { 'value': 3, 'label': 'Changeling', component: <p>change</p> },
       { 'value': 4, 'label': 'Wraith', component: <p>wraith</p> },
@@ -34,6 +35,11 @@ export default class SheetPicker extends Component {
     this.setState({selectedValue: value});
     console.log('selectedValue: ', value);
   }
+  demonStateCallback(state) {
+    console.log('savingState: ', state);
+    this.setState({ savedDemonState: state });
+    console.log('demonStateCallbackThis.State: ', this.state);
+  }
 
   render() {
     return (
@@ -44,6 +50,7 @@ export default class SheetPicker extends Component {
         </div>
         <hr />
         <div>{this.state.selectedValue.component}</div>
+        <div>{JSON.stringify(this.state.savedDemonState.character, 3)}</div>
         <style jsx>{`
           h1 {
             align-self: center;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Player extends Component {
+class LabelInput extends Component {
   constructor(props) {
     super(props);
 
@@ -9,7 +9,7 @@ class Player extends Component {
     this.textView = React.createRef();
     this.onChange = this.onChange.bind(this);
     this.activateInput = this.activateInput.bind(this);
-    this.state = { player: '', isActive: false };
+    this.state = { value: this.props.initialValue, isActive: false };
   }
 
   componentDidUpdate() {
@@ -19,7 +19,7 @@ class Player extends Component {
   }
 
   onChange(e) {
-    this.setState({player: e.target.value});
+    this.setState({value: e.target.value});
     this.props.onChangedCallback(e.target.value);
   }
 
@@ -29,23 +29,19 @@ class Player extends Component {
 
   render() {
     return (
-      <div className='player'>
-        <span>Player:</span>
+      <div className='labelInput'>
+        <span>{this.props.displayLabel}:</span>
         {
           this.state.isActive
-            ? <input className='textInput' onBlur={() => this.setState({isActive: false})} type='text' maxLength='50' onChange={this.onChange} value={this.state.player} ref={this.textInput}/>
-            : <p className='textValue' onClick={this.activateInput} ref={this.textView}>{this.state.player}</p>
+            ? <input className='textInput' onBlur={() => this.setState({isActive: false})} type='text' maxLength='50' onChange={this.onChange} value={this.state.value} ref={this.textInput}/>
+            : <p className='textValue' onClick={this.activateInput} ref={this.textView}>{this.state.value}</p>
         }
         <style jsx>{`
-          .textValue {
-          }
-          .textInput {
-          }
           .active {
             display: block;
             visibility: visible;
           }
-          .player {
+          .labelInput {
             display: flex;
           }
           span {
@@ -70,9 +66,10 @@ class Player extends Component {
   }
 }
 
-Player.propTypes = {
+LabelInput.propTypes = {
   onChangedCallback: PropTypes.func.isRequired,
-  initialValue: PropTypes.string.isRequired
+  initialValue: PropTypes.string.isRequired,
+  displayLabel: PropTypes.string.isRequired
 }
 
-export default Player;
+export default LabelInput;

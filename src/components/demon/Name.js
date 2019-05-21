@@ -9,7 +9,7 @@ class Name extends Component {
     this.textView = React.createRef();
     this.onChange = this.onChange.bind(this);
     this.activateInput = this.activateInput.bind(this);
-    this.state = { name: '', isActive: false };
+    this.state = { name: this.props.initialValue, isActive: false };
   }
 
   componentDidUpdate() {
@@ -71,7 +71,8 @@ class Name extends Component {
 }
 
 Name.propTypes = {
-  onChangedCallback: PropTypes.func.isRequired
+  onChangedCallback: PropTypes.func.isRequired,
+  initialValue: PropTypes.string.isRequired
 }
 
 export default Name;

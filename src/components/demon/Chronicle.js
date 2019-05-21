@@ -67,7 +67,8 @@ class Chronicle extends Component {
 }
 
 Chronicle.propTypes = {
-  onChangedCallback: PropTypes.func.isRequired
+  onChangedCallback: PropTypes.func.isRequired,
+  initialValue: PropTypes.string.isRequired
 }
 
 export default Chronicle;

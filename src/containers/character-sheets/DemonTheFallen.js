@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Name from '../../components/demon/Name';
+import LabelInput from '../../components/common/LabelInput';
+// import Name from '../../components/demon/Name';
 import Player from '../../components/demon/Player';
 import Chronicle from '../../components/demon/Chronicle';
 import Demeanor from '../../components/demon/Demeanor';
@@ -17,8 +18,8 @@ class DemonTheFallen extends Component {
 
     this.state = this.props.seedState;
   }
-  componentWillUpdate(state, nextState) {
-    this.props.saveStateCallback(nextState);
+  componentWillUpdate(props, state) {
+    this.props.saveStateCallback(state);
   }
   render() {
     return (
@@ -26,19 +27,19 @@ class DemonTheFallen extends Component {
         <h2>Demon the Fallen</h2>
         <div className='basic-info'>
           <div className='col col1'>
-            <Name onChangedCallback={value => this.setState({name: value})}/>
-            <Player onChangedCallback={value => this.setState({player: value})}/>
-            <Chronicle onChangedCallback={value => this.setState({chronicle: value})}/>
+            <LabelInput displayLabel='Name' onChangedCallback={value => this.setState({character: {...this.state.character, name: value}})} initialValue={this.state.character.name}/>
+            <LabelInput displayLabel='Player' onChangedCallback={value => this.setState({character: {...this.state.character, player: value}})} initialValue={this.state.character.player}/>
+            <LabelInput displayLabel='Chronicle' onChangedCallback={value => this.setState({character: {...this.state.character, chronicle: value}})} initialValue={this.state.character.chronicle}/>
           </div>
           <div className='col col2'>
-            <Nature onChangedCallback={value => this.setState({nature: value})}/>
-            <Demeanor onChangedCallback={value => this.setState({demeanor: value})}/>
-            <Concept onChangedCallback={value => this.setState({concept: value})}/>
+            <LabelInput displayLabel='Nature' onChangedCallback={value => this.setState({character: {...this.state.character, nature: value}})} initialValue={this.state.character.nature}/>
+            <LabelInput displayLabel='Demeanor' onChangedCallback={value => this.setState({character: {...this.state.character, demeanor: value}})} initialValue={this.state.character.demeanor}/>
+            <LabelInput displayLabel='Concept' onChangedCallback={value => this.setState({character: {...this.state.character, concept: value}})} initialValue={this.state.character.concept}/>
           </div>
           <div className='col col3'>
-            <House onChangedCallback={value => this.setState({house: value})}/>
-            <Faction onChangedCallback={value => this.setState({faction: value})}/>
-            <Visage onChangedCallback={value => this.setState({visage: value})}/>
+            <LabelInput displayLabel='House' onChangedCallback={value => this.setState({character: {...this.state.character, house: value}})} initialValue={this.state.character.house}/>
+            <LabelInput displayLabel='Faction' onChangedCallback={value => this.setState({character: {...this.state.character, faction: value}})} initialValue={this.state.character.faction}/>
+            <LabelInput displayLabel='Visage' onChangedCallback={value => this.setState({character: {...this.state.character, visage: value}})} initialValue={this.state.character.visage}/>
           </div>
         </div>
         <hr />
