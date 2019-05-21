@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import initialState from '../../components/DemonInitialState';
+import PropTypes from 'prop-types';
 
-import Name from '../../components/common/Name';
-import Player from '../../components/common/Player';
-import Chronicle from '../../components/common/Chronicle';
-import Demeanor from '../../components/common/Demeanor';
-import Nature from '../../components/common/Nature';
-import Concept from '../../components/common/Concept';
-import House from '../../components/common/House';
-import Faction from '../../components/common/Faction';
-import Visage from '../../components/common/Visage';
+import Name from '../../components/demon/Name';
+import Player from '../../components/demon/Player';
+import Chronicle from '../../components/demon/Chronicle';
+import Demeanor from '../../components/demon/Demeanor';
+import Nature from '../../components/demon/Nature';
+import Concept from '../../components/demon/Concept';
+import House from '../../components/demon/House';
+import Faction from '../../components/demon/Faction';
+import Visage from '../../components/demon/Visage';
 
-export default class DemonTheFallen extends Component {
+class DemonTheFallen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = initialState;
+    this.state = this.props.seedState;
+  }
+  componentWillUpdate(state, nextState) {
+    this.props.saveStateCallback(nextState);
   }
   render() {
     return (
@@ -37,12 +40,18 @@ export default class DemonTheFallen extends Component {
             <Faction onChangedCallback={value => this.setState({faction: value})}/>
             <Visage onChangedCallback={value => this.setState({visage: value})}/>
           </div>
-          <p>{this.state.name}</p>
         </div>
+        <hr />
         <style jsx>{`
+          hr {
+            color: black;
+            width: 100%;
+            margin-top: 15px;
+          }
           .col {
             display: flex;
             flex-direction: column;
+            align-self: space-between;
           }
           h2 {
             align-self: center;
@@ -50,8 +59,7 @@ export default class DemonTheFallen extends Component {
           .basic-info {
             display: flex;
             flex-direction: row;
-            justify-content: center;
-            align-items: space-between;
+            justify-content: space-around;
           }
           .character-sheet {
             display: flex;
@@ -62,3 +70,9 @@ export default class DemonTheFallen extends Component {
     );
   }
 }
+
+DemonTheFallen.propTypes = {
+  seedState: PropTypes.object.isRequired,
+  saveStateCallback: PropTypes.func.isRequired,
+}
+export default DemonTheFallen;
