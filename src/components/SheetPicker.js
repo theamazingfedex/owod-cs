@@ -19,21 +19,16 @@ export default class SheetPicker extends Component {
   }
 
   componentWillMount() {
-    this.setState({selectedValue: this.getSelectOptions()[0]});
-    this.loadSheetStatesFromLocalStorage();
+    this.setState({selectedValue: this.getSelectOptions()[0], savedDemonState: this.loadSheetStatesFromLocalStorage()});
   }
 
   loadSheetStatesFromLocalStorage() {
-    console.log('loading sheets from local storage...');
-    const loadedDemonState = JSON.parse(localStorage.getItem(demonLocalStorageId)) || demonInitialState;
-    this.setState({
-      savedDemonState: loadedDemonState
-    });
+    return JSON.parse(localStorage.getItem(demonLocalStorageId)) || demonInitialState;
   }
 
   getSelectOptions() {
     return [
-      { 'value': 1, 'label': 'Demon the Fallen', component: <DemonTheFallen saveStateCallback={this.demonStateCallback} seedState={this.state.savedDemonState} /> },
+      { 'value': 1, 'label': 'Demon the Fallen', component: <DemonTheFallen saveStateCallback={this.demonStateCallback} seedState={this.loadSheetStatesFromLocalStorage()} /> },
       { 'value': 2, 'label': 'Mage the Ascension', component: <p>Mage</p> },
       { 'value': 3, 'label': 'Changeling', component: <p>change</p> },
       { 'value': 4, 'label': 'Wraith', component: <p>wraith</p> },
@@ -43,8 +38,7 @@ export default class SheetPicker extends Component {
 
   onSelectChange(value) {
     if (value.length == 0) return;
-    this.setState({selectedValue: value});
-    this.loadSheetStatesFromLocalStorage();
+    this.setState({selectedValue: value, savedDemonState: this.loadSheetStatesFromLocalStorage()});
   }
 
   demonStateCallback(state) {
@@ -61,7 +55,7 @@ export default class SheetPicker extends Component {
         </div>
         <hr />
         <div>{this.state.selectedValue.component}</div>
-        <div>{JSON.stringify(this.state.savedDemonState.character, 3)}</div>
+        <div>{JSON.stringify(this.state.savedDemonState, null, 1)}</div>
         <style jsx>{`
           h1 {
             align-self: center;
