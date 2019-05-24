@@ -56,6 +56,14 @@ export default class SheetPicker extends Component {
         <hr />
         <div>{this.state.selectedValue.component}</div>
         <style jsx>{`
+          @font-face {
+            font-family: 'DEMON SKER';
+            src: url('./DEMON SKER.ttf') format('truetype')
+          }
+          * {
+            font-family: 'DEMON SKER';
+            font-size: 24px;
+          }
           h1 {
             align-self: center;
           }
