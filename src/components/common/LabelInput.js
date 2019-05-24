@@ -48,10 +48,11 @@ class LabelInput extends Component {
             margin-right: 5px;
           }
           input {
-            width: 200px;
+            width: 204px;
             height: 24px;
             background: #EEE;
             padding: 1px 2px;
+            margin-bottom: 18px;
           }
           p {
             padding: 1px 2px;

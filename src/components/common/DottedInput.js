@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
-import { relative } from 'path';
 
 const style = {
   display: 'inline-block',
@@ -27,11 +26,11 @@ class DottedInput extends Component {
 
     this.onRatingChange = this.onRatingChange.bind(this);
     this.state = {
-      value: props.initialValue
+      value: props.initialValue || 0
     }
   }
   componentWillMount() {
-    this.setState({value: this.props.initialValue});
+    this.setState({value: this.props.initialValue || 0});
   }
 
   onRatingChange(value) {
@@ -78,7 +77,7 @@ class DottedInput extends Component {
 
 DottedInput.propTypes = {
   displayLabel: PropTypes.string.isRequired,
-  initialValue: PropTypes.number.isRequired,
+  initialValue: PropTypes.number,
   onChangedCallback: PropTypes.func.isRequired
 }
 

@@ -55,7 +55,6 @@ export default class SheetPicker extends Component {
         </div>
         <hr />
         <div>{this.state.selectedValue.component}</div>
-        <div>{JSON.stringify(this.state.savedDemonState, null, 1)}</div>
         <style jsx>{`
           h1 {
             align-self: center;

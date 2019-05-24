@@ -60,8 +60,8 @@ const demonInitialState = {
     science: 0
   },
   advantages: {
-    backgrounds: [],
-    lore: [],
+    backgrounds: [{label: 'something', value: 1}],
+    lore: [{label: 'something else', value: 1}],
     virtues: {
       conscience: 1,
       conviction: 1,
