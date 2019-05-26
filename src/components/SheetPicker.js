@@ -57,11 +57,11 @@ export default class SheetPicker extends Component {
         <div>{this.state.selectedValue.component}</div>
         <style jsx>{`
           @font-face {
-            font-family: 'DEMON SKER';
-            src: url('./DEMON SKER.ttf') format('truetype')
+            font-family: 'DEMON_SKER';
+            src: url('./DEMON_SKER.ttf') format('truetype')
           }
           * {
-            font-family: 'DEMON SKER';
+            font-family: 'DEMON_SKER';
             font-size: 24px;
           }
           h1 {
