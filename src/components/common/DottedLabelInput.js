@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
-
-const style = {
-  display: 'inline-block',
-  borderRadius: '50%',
-  border: '5px double white',
-  width: 10,
-  height: 10
-};
-
-const emptyStyle = {
-  ...style,
-  backgroundColor: '#CCC'
-};
-
-const fullStyle = {
-  ...style,
-  backgroundColor: 'black'
-};
+import { emptyCircularStyle, fullCircularStyle } from './RatingStyles';
 
 class DottedLabelInput extends Component {
   constructor(props) {
@@ -100,7 +83,7 @@ class DottedLabelInput extends Component {
             : <p className='textValue' onClick={this.activateInput} ref={this.textView}>{this.props.displayLabel}</p>
         }
         <div className='spacing'></div>
-        <span className='rating'><Rating initialRating={this.state.value} emptySymbol={emptyStyle} fullSymbol={fullStyle} placeholderSymbol={fullStyle} onClick={this.onRatingChange} onHover={this.onRatingHover}/></span>
+        <span className='rating'><Rating initialRating={this.state.value} emptySymbol={emptyCircularStyle} fullSymbol={fullCircularStyle} placeholderSymbol={fullCircularStyle} onClick={this.onRatingChange} onHover={this.onRatingHover}/></span>
         <style jsx>{`
           .active {
             display: block;
