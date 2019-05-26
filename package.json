@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --hot",
-    "start2": "webpack-dev-server --hot --open --mode development"
+    "start": "serve -s dist",
+    "dev": "webpack-dev-server --hot"
   },
   "author": "Daniel Wood (daniel.a.wood.jr@gmail.com)",
   "license": "MIT",
@@ -31,6 +31,7 @@
     "react-dom": "^16.8.6",
     "react-rating": "^1.7.2",
     "react-select": "^2.4.3",
+    "serve": "^11.0.0",
     "styled-jsx": "^3.2.1"
   }
 }
