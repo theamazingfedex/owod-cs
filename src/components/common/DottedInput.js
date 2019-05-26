@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
-
-const style = {
-  display: 'inline-block',
-  borderRadius: '50%',
-  border: '5px double white',
-  width: 10,
-  height: 10
-};
-
-const emptyStyle = {
-  ...style,
-  backgroundColor: '#CCC'
-};
-
-const fullStyle = {
-  ...style,
-  backgroundColor: 'black'
-};
+import { emptyCircularStyle, fullCircularStyle } from './RatingStyles';
 
 class DottedInput extends Component {
   constructor(props) {
@@ -52,14 +35,14 @@ class DottedInput extends Component {
       <div className='dotted-input'>
         <span className='label'>{this.props.displayLabel}</span>
         <div className='spacing'></div>
-        <span className='rating'><Rating initialRating={this.state.value} emptySymbol={emptyStyle} fullSymbol={fullStyle} placeholderSymbol={fullStyle} onClick={this.onRatingChange}/></span>
+        <span className='rating'><Rating initialRating={this.state.value} emptySymbol={emptyCircularStyle} fullSymbol={fullCircularStyle} placeholderSymbol={fullCircularStyle} onClick={this.onRatingChange}/></span>
         <style jsx>{`
           .rating {
             flex-grow: 0;
           }
           .spacing {
             flex-grow: 3;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #aaa;
             margin: 0 0 2px 2px;
           }
           .label {
