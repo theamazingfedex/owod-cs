@@ -12,12 +12,16 @@ Available in production at [owod.herokuapp.com](owod.herokuapp.com)
 ## Getting Started
  1. Clone the repository and `cd` into it.
  2. Run `npm install`
- 3. For development run `npm run dev` to start webpack with hot reloading
+ 3. For development run `npm run dev` to start webpack with hot reloading.
  4. For production run `npm run build && npm start`
 
 ## Contributing
  * Do not push code directly to master, it is a protected branch.
- * Create a new branch based off of master, then submit pull requests with changes
+ * Create a new branch based off of master, then submit pull requests with changes.
+ * Branches with failing tests won't be merged until they're fixed.
+
+## Testing
+ * [Jest + Enzyme](https://github.com/FormidableLabs/enzyme-matchers/tree/master/packages/jest-enzyme)
 
 ## License:
 The MIT License
