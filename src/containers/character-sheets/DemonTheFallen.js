@@ -6,6 +6,7 @@ import DottedInput from '../../components/common/DottedInput';
 import DottedLabelInput from '../../components/common/DottedLabelInput';
 import ClearLocalStorageButton from '../../components/common/ClearLocalStorageButton';
 import { demonLocalStorageId } from '../../components/common/LocalStorageIds';
+import TemporaryPermanentTracker from '../../components/common/TemporaryPermanentTracker';
 
 class DemonTheFallen extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class DemonTheFallen extends Component {
 
     this.loreChangedCallback = this.loreChangedCallback.bind(this);
     this.backgroundChangedCallback = this.backgroundChangedCallback.bind(this);
+    this.meritChangedCallback = this.meritChangedCallback.bind(this);
     this.state = this.props.seedState;
   }
 
@@ -38,6 +40,17 @@ class DemonTheFallen extends Component {
       backgrounds[value.index] = {label: value.label, value: value.value};
     }
     this.setState({advantages: {...this.state.advantages, backgrounds: backgrounds}});
+  }
+
+  meritChangedCallback(index) {
+    return (value) => {
+      let merits = this.state.merits.slice(0);
+      if (value.length === 0) {
+        merits.splice(index, 1);
+      } else {
+        merits[index].name = value;
+      }
+    }
   }
 
   render() {
@@ -66,16 +79,19 @@ class DemonTheFallen extends Component {
         <h3>Attributes</h3>
         <div className='attributes'>
           <div className='col attr-col1'>
+            <h5>Physical</h5>
             <DottedInput displayLabel='Strength' initialValue={ this.state.attributes.strength } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, strength: value}})}/>
             <DottedInput displayLabel='Dexterity' initialValue={ this.state.attributes.dexterity } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, dexterity: value}})}/>
             <DottedInput displayLabel='Stamina' initialValue={ this.state.attributes.stamina } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, stamina: value}})}/>
           </div>
           <div className='col attr-col2'>
+            <h5>Social</h5>
             <DottedInput displayLabel='Charisma' initialValue={ this.state.attributes.charisma } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, charisma: value}})}/>
             <DottedInput displayLabel='Manipulation' initialValue={ this.state.attributes.manipulation } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, manipulation: value}})}/>
             <DottedInput displayLabel='Appearance' initialValue={ this.state.attributes.appearance } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, appearance: value}})}/>
           </div>
           <div className='col attr-col3'>
+            <h5>Mental</h5>
             <DottedInput displayLabel='Perception' initialValue={ this.state.attributes.perception } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, perception: value}})}/>
             <DottedInput displayLabel='Intelligence' initialValue={ this.state.attributes.intelligence } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, intelligence: value}})}/>
             <DottedInput displayLabel='Wits' initialValue={ this.state.attributes.wits } onChangedCallback={value => this.setState({attributes: {...this.state.attributes, wits: value}})}/>
@@ -85,6 +101,7 @@ class DemonTheFallen extends Component {
         <h3>Abilities</h3>
         <div className='abilities'>
           <div className='col abili-col1'>
+            <h5>Talents</h5>
             <DottedInput displayLabel='Alertness' initialValue={ this.state.abilities.alertness } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, alertness: value}})}/>
             <DottedInput displayLabel='Athletics' initialValue={ this.state.abilities.athletics } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, athletics: value}})}/>
             <DottedInput displayLabel='Awareness' initialValue={ this.state.abilities.awareness } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, awareness: value}})}/>
@@ -102,6 +119,7 @@ class DemonTheFallen extends Component {
             <DottedInput displayLabel='Subterfuge' initialValue={ this.state.abilities.subterfuge } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, subterfuge: value}})}/>
           </div>
           <div className='col abili-col2'>
+            <h5>Skills</h5>
             <DottedInput displayLabel='Animal Ken' initialValue={ this.state.abilities.animalken } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, animalken: value}})}/>
             <DottedInput displayLabel='Crafts' initialValue={ this.state.abilities.crafts } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, crafts: value}})}/>
             <DottedInput displayLabel='Demolitions' initialValue={ this.state.abilities.demolitions } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, demolitions: value}})}/>
@@ -119,6 +137,7 @@ class DemonTheFallen extends Component {
             <DottedInput displayLabel='Technology' initialValue={ this.state.abilities.technology } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, technology: value}})}/>
           </div>
           <div className='col abili-col3'>
+            <h5>Knowledges</h5>
             <DottedInput displayLabel='Academics' initialValue={ this.state.abilities.charisma } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, academics: value}})}/>
             <DottedInput displayLabel='Computer' initialValue={ this.state.abilities.manipulation } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, computer: value}})}/>
             <DottedInput displayLabel='Finance' initialValue={ this.state.abilities.appearance } onChangedCallback={value => this.setState({abilities: {...this.state.abilities, finance: value}})}/>
@@ -140,7 +159,7 @@ class DemonTheFallen extends Component {
         <h3>Advantages</h3>
         <div className='advantages'>
           <div className='col back-col1'>
-            <h4>Backgrounds</h4>
+            <h5>Backgrounds</h5>
             {
               this.state.advantages.backgrounds.map((background, idx) =>
                 <DottedLabelInput key={idx} index={idx} displayLabel={background.label || ''} initialValue={background.value || 0} onChangedCallback={this.backgroundChangedCallback}/>
@@ -149,7 +168,7 @@ class DemonTheFallen extends Component {
             <DottedLabelInput index={this.state.advantages.backgrounds.length} displayLabel='' initialValue={0} onChangedCallback={this.backgroundChangedCallback}/>
           </div>
           <div className='col lore-col2'>
-            <h4>Lore</h4>
+            <h5>Lore</h5>
             {
               this.state.advantages.lore.map((lore, idx) => {
                 return <DottedLabelInput key={idx} index={idx} displayLabel={lore.label || ''} initialValue={lore.value || 0} onChangedCallback={this.loreChangedCallback}/>
@@ -158,17 +177,50 @@ class DemonTheFallen extends Component {
             <DottedLabelInput index={this.state.advantages.lore.length} displayLabel='' initialValue={0} onChangedCallback={this.loreChangedCallback}/>
           </div>
           <div className='col virt-col3'>
-            <h4>Virtues</h4>
+            <h5>Virtues</h5>
             <DottedInput displayLabel='Conscience' initialValue={ this.state.advantages.virtues.conscience } onChangedCallback={value => this.setState({advantages: {...this.state.advantages, virtues: {...this.state.advantages.virtues, conscience: value}}})}/>
             <DottedInput displayLabel='Conviction' initialValue={ this.state.advantages.virtues.conviction } onChangedCallback={value => this.setState({advantages: {...this.state.advantages, virtues: {...this.state.advantages.virtues, conviction: value}}})}/>
             <DottedInput displayLabel='Courage' initialValue={ this.state.advantages.virtues.courage } onChangedCallback={value => this.setState({advantages: {...this.state.advantages, virtues: {...this.state.advantages.virtues, courage: value}}})}/>
           </div>
         </div>
+        <hr />
+        <div className='merits-faith-health'>
+          <div className='merits'>
+            <h5>Merits and Flaws</h5>
+            {
+              this.state.merits.map((merit, idx) => {
+                return <LabelInput key={idx} initialValue={merit.name || ''} displayLabel={merit.type || ''} onChangedCallback={this.meritChangedCallback(idx)}/>
+              })
+            }
+            <LabelInput initialValue='flaw' displayLabel='Flaws' onChangedCallback={this.meritChangedCallback(this.state.merits.length)}/>
+          </div>
+          <div className='faith-torment-willpower'>
+            <div className='faith'>
+              <TemporaryPermanentTracker label='Faith' permanentValue={this.state.faith.permanent} temporaryValue={this.state.faith.temporary} onChangedCallback={(value) => this.setState({ faith: { permanent: value.permanent, temporary: value.temporary } })} />
+            </div>
+            <div className='torment'>
+              <TemporaryPermanentTracker label='Torment' permanentValue={this.state.torment.permanent} temporaryValue={this.state.torment.temporary} onChangedCallback={(value) => this.setState({ torment: { permanent: value.permanent, temporary: value.temporary } })} />
+            </div>
+            <div className='willpower'>
+              <TemporaryPermanentTracker label='Willpower' permanentValue={this.state.willpower.permanent} temporaryValue={this.state.willpower.temporary} onChangedCallback={(value) => this.setState({ willpower: { permanent: value.permanent, temporary: value.temporary } })} />
+            </div>
+          </div>
+          <div className='health'>
+            <h5>Health</h5>
+            <LabelInput initialValue='healthy' displayLabel='Health' onChangedCallback={value => console.log('healthchanged: ', value)}/>
+          </div>
+        </div>
         <style jsx>{`
-          hr {
-            color: black;
-            width: 100%;
-            margin-top: 15px;
+          .merits-faith-health {
+            display: flex;
+            justify-content: space-around;
+          }
+          .health, .merits {
+            margin-top: 20px;
+          }
+          .faith-torment-willpower, .merits, .health {
+            display: flex;
+            flex-direction: column;
           }
           .attributes, .abilities, .advantages {
             display: flex;
@@ -182,10 +234,16 @@ class DemonTheFallen extends Component {
             align-self: space-between;
             align-items: flex-end;
           }
-          h4 {
-            margin-top: -10px;
+          hr {
+            color: black;
+            width: 100%;
+            margin-top: 15px;
           }
-          h2, h3, h4 {
+          h5 {
+            margin-top: -10px;
+            margin-bottom: 20px;
+          }
+          h2, h3, h4, h5 {
             align-self: center;
           }
           .basic-info {
