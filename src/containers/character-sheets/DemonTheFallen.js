@@ -186,6 +186,7 @@ class DemonTheFallen extends Component {
         <hr />
         <div className='merits-faith-health'>
           <div className='merits'>
+            { /* TODO: fix merits not sticking with the flexbox */}
             <h5>Merits and Flaws</h5>
             {
               this.state.merits.map((merit, idx) => {
@@ -216,9 +217,14 @@ class DemonTheFallen extends Component {
             justify-content: space-around;
           }
           .health, .merits {
+            display: flex;
+            flex-direction: column;
             margin-top: 20px;
+            flex-grow: 1;
           }
-          .faith-torment-willpower, .merits, .health {
+          .faith-torment-willpower {
+            flex-grow: 1.5;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
           }

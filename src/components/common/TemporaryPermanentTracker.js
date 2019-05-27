@@ -7,11 +7,13 @@ import { emptyCircularStyle,
         fullSquareStyle } from './RatingStyles';
 
 class TemporaryPermanentTracker extends Component {
+  // TODO: make this a stateless component
   constructor(props) {
     super(props);
 
     this.onTempChanged = this.onTempChanged.bind(this);
     this.onPermChanged = this.onPermChanged.bind(this);
+    this.increaseDotMargins = this.increaseDotMargins.bind(this);
   }
 
   onTempChanged(value) {
@@ -36,29 +38,62 @@ class TemporaryPermanentTracker extends Component {
     }
   }
 
+  increaseDotMargins(style) {
+    return {...style, marginRight: 10};
+  }
+
   render() {
     return (
       <div className='temp-permanent-tracker'>
         <div className='header'>
-          <div className='spacing'></div>
+          <div className='arrow-left'></div>
           <h5>{this.props.label}</h5>
-          <div className='spacing'></div>
+          <div className='arrow-right'></div>
         </div>
-        <Rating stop={10} initialRating={this.props.permanentValue} emptySymbol={emptyCircularStyle} fullSymbol={fullCircularStyle} placeholderSymbol={fullCircularStyle} onClick={this.onPermChanged}/>
-        <Rating stop={10} initialRating={this.props.temporaryValue} emptySymbol={emptySquareStyle} fullSymbol={fullSquareStyle} placeholderSymbol={fullSquareStyle} onClick={this.onTempChanged} />
+        <div className='ratings'>
+          <div className='permanent'>
+            <Rating stop={10} initialRating={this.props.permanentValue} emptySymbol={this.increaseDotMargins(emptyCircularStyle)} fullSymbol={this.increaseDotMargins(fullCircularStyle)} placeholderSymbol={this.increaseDotMargins(fullCircularStyle)} onClick={this.onPermChanged} />
+          </div>
+          <div className='temporary'>
+            <Rating stop={10} initialRating={this.props.temporaryValue} emptySymbol={this.increaseDotMargins( emptySquareStyle )} fullSymbol={this.increaseDotMargins( fullSquareStyle )} placeholderSymbol={this.increaseDotMargins( fullSquareStyle )} onClick={this.onTempChanged} />
+          </div>
+        </div>
         <style jsx>{`
           .temp-permanent-tracker {
             display: flex;
             flex-direction: column;
             min-width: 200px;
+            justify-content: center;
+            margin-bottom: 10px;
           }
           .header {
             display: flex;
           }
-          .spacing {
-            border-top: 2px solid black;
-            margin-top: 20px;
-            flex-grow: 2;
+          .ratings {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+          }
+          .temporary {
+            margin-top: 5px;
+          }
+          .arrow-left {
+            flex-grow:2;
+            margin-top: 16px;
+            width: 1px;
+            height: 1px;
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            border-right: solid 90px black;
+          }
+          .arrow-right {
+            flex-grow:2;
+            margin-top: 16px;
+            width: 1px;
+            height: 1px;
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            border-left: 90px solid black;
           }
           h5 {
             margin: 10px;
