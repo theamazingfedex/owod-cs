@@ -1,4 +1,6 @@
 # owod-cs
+[![Tests Passing](https://travis-ci.com/theamazingfedex/owod-cs.svg?branch=master)](https://travis-ci.com/theamazingfedex/owod-cs)
+
 A digital character sheet for the Old World of Darkness pen and paper games.
  * Demon the Fallen
  * Vampire the Masquerade
