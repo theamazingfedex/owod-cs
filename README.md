@@ -1,7 +1,9 @@
 # owod-cs
 [![Tests Passing](https://travis-ci.com/theamazingfedex/owod-cs.svg?branch=master)](https://travis-ci.com/theamazingfedex/owod-cs)
-[![Known Vulnerabilities](https://snyk.io/test/github/theamazingfedex/owod-cs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/theamazingfedex/owod-cs?targetFile=package.json)
+[![Heroku App Status](http://heroku-shields.herokuapp.com/owod)](https://owod.herokuapp.com)
+[![Heroku Stage App Status](http://heroku-shields.herokuapp.com/owod-stage)](https://owod-stage.herokuapp.com)
 [![Greenkeeper badge](https://badges.greenkeeper.io/theamazingfedex/owod-cs.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/theamazingfedex/owod-cs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/theamazingfedex/owod-cs?targetFile=package.json)
 
 A digital character sheet for the Old World of Darkness pen and paper games.
  * Demon the Fallen
@@ -11,7 +13,8 @@ A digital character sheet for the Old World of Darkness pen and paper games.
  * Mage: The Ascension
  * Hunter: The Reckoning
 
-Available in production at [owod.herokuapp.com](owod.herokuapp.com)
+Master branch is available in production at [owod.herokuapp.com](https://owod.herokuapp.com)
+Dev branch is also available to preview at [owod-stage.herokuapp.com](https://owod-stage.herokuapp.com)
 
 ## Getting Started
  1. Clone the repository and `cd` into it.
@@ -23,9 +26,10 @@ Available in production at [owod.herokuapp.com](owod.herokuapp.com)
  * Do not push code directly to master, it is a protected branch.
  * Create a new branch based off of master, then submit pull requests with changes.
  * Branches with failing tests won't be merged until they're fixed.
+ * `dev` is our staging environment. Any changes pushed to dev will be automatically deployed to the [staging environment](https://owod-stage.herokuapp.com)
 
 ## Testing
- * [Jest + Enzyme](https://github.com/FormidableLabs/enzyme-matchers/tree/master/packages/jest-enzyme)
+ * `npm test`: [Jest + Enzyme](https://github.com/FormidableLabs/enzyme-matchers/tree/master/packages/jest-enzyme)
 
 ## License:
 The MIT License
