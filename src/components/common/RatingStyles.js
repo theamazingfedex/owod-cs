@@ -1,35 +1,37 @@
 const baseCircularStyle = {
   display: 'inline-block',
-  borderRadius: '50%',
-  border: '5px double white',
-  width: 10,
-  height: 10
+  borderRadius: '48%',
+  border: '4px double #fff',
+  width: 12,
+  height: 14,
+  marginRight: 1
 };
 
 export const emptyCircularStyle = {
   ...baseCircularStyle,
-  backgroundColor: '#CCC'
+  backgroundColor: '#ccc'
 };
 
 export const fullCircularStyle = {
   ...baseCircularStyle,
-  backgroundColor: 'black'
+  backgroundColor: '#555',
 };
 
 const baseSquareStyle = {
   display: 'inline-block',
   borderRadius: '0%',
-  border: '5px double white',
-  width: 10,
-  height: 10
+  border: '4px double #fff',
+  width: 12,
+  height: 12,
+  marginRight: 1
 };
 
 export const emptySquareStyle = {
-  ...baseCircularStyle,
+  ...baseSquareStyle,
   backgroundColor: '#CCC'
 };
 
 export const fullSquareStyle = {
-  ...baseCircularStyle,
-  backgroundColor: 'black'
+  ...baseSquareStyle,
+  backgroundColor: '#555'
 };
