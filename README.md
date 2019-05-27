@@ -1,5 +1,6 @@
 # owod-cs
 [![Tests Passing](https://travis-ci.com/theamazingfedex/owod-cs.svg?branch=master)](https://travis-ci.com/theamazingfedex/owod-cs)
+[![Known Vulnerabilities](https://snyk.io/test/github/theamazingfedex/owod-cs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/theamazingfedex/owod-cs?targetFile=package.json)
 
 A digital character sheet for the Old World of Darkness pen and paper games.
  * Demon the Fallen
