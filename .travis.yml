@@ -2,3 +2,9 @@ language: node_js
 node_js:
   - "10"
   - "12"
+before_install:
+# package-lock.json was introduced in npm@5
+- npm install -g greenkeeper-lockfile
+install: npm install
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
