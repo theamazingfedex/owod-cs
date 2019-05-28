@@ -20,6 +20,6 @@ describe('<TemporaryPermanentTracker />', () => {
         />;
     let wrapper = shallow(componentUnderTest);
 
-    expect(wrapper.find('h5')).toHaveText('test');
+    expect(wrapper.find('.temp-permanent-tracker')).toExist();
   });
 });
