@@ -69,8 +69,8 @@ const demonInitialState = {
     }
   },
   merits: [
-    { name: 'Great Liar', type: 'merit', cost: 2 },
-    { name: 'Revoked License', type: 'flaw', cost: -2 }
+    { name: 'Great Liar', cost: 2 },
+    { name: 'Revoked License', cost: -2 }
   ],
   derangements: [],
   otherTraits: [{ name: 'someTrait', value: 1 }],
