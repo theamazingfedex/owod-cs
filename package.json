@@ -23,6 +23,7 @@
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
+    "@types/jest": "^24.0.13",
     "babel-loader": "8.0.6",
     "copy-webpack-plugin": "5.0.3",
     "enzyme": "3.9.0",
