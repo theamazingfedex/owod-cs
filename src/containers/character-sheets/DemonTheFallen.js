@@ -51,6 +51,7 @@ class DemonTheFallen extends Component {
     } else {
       merits[value.index] = value;
     }
+    this.setState({merits: merits});
   }
 
   render() {
@@ -214,12 +215,10 @@ class DemonTheFallen extends Component {
         <style jsx>{`
           .health, .merits {
             margin-top: 20px;
-            flex-grow: 1;
+            min-width: 300px;
             margin-right:20px;
           }
           .faith-torment-willpower {
-            flex-grow: 1.5;
-            flex-shrink: 0;
             display: flex;
             flex-direction: column;
           }
@@ -246,6 +245,7 @@ class DemonTheFallen extends Component {
           }
           h2, h3, h4, h5 {
             align-self: center;
+            font-weight: normal;
           }
           .basic-info {
             display: flex;

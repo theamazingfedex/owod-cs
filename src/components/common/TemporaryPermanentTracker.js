@@ -62,7 +62,6 @@ class TemporaryPermanentTracker extends Component {
           .temp-permanent-tracker {
             display: flex;
             flex-direction: column;
-            min-width: 200px;
             justify-content: center;
             margin-bottom: 10px;
           }
@@ -99,6 +98,7 @@ class TemporaryPermanentTracker extends Component {
             margin: 10px;
             align-self: center;
             flex-grow: 0;
+            font-weight: normal;
           }
         `}</style>
       </div>

@@ -67,7 +67,6 @@ class DottedLabelInput extends Component {
 
   onRatingHover(value) {
     this.setState({hoveredValue: value});
-    console.log('hoveredValue: ', this.state.hoveredValue);
   }
 
   activateInput() {
@@ -99,7 +98,7 @@ class DottedLabelInput extends Component {
             width: 204px;
             height: 24px;
             background: #EEE;
-            padding: 1px 2px;
+            padding-top: 4px;
             margin-bottom: 26px;
           }
           p {
@@ -122,6 +121,10 @@ class DottedLabelInput extends Component {
           .dotted-input {
             display: flex;
             width: 250px;
+          }
+          * {
+            font-family: 'DEMON_SKER';
+            font-size: 24px;
           }
         `}</style>
       </div>
