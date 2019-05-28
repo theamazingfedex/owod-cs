@@ -8,8 +8,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "testwatch": "npm run test -- --watch",
+    "test": "jest --coverage",
+    "testwatch": "npm run test -- --coverage --watch",
     "build": "webpack --mode=production",
     "start": "serve -s dist",
     "dev": "webpack-dev-server --hot",
