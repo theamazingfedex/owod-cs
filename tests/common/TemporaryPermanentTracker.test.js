@@ -1,15 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+
 import TemporaryPermanentTracker from '../../src/components/common/TemporaryPermanentTracker';
-import { exportAllDeclaration, isTSAnyKeyword } from '@babel/types';
-  // isTorment: PropTypes.bool,
-  // label: PropTypes.string.isRequired,
-  // onChangedCallback: PropTypes.func.isRequired,
-  // permanentValue: PropTypes.number.isRequired,
-  // temporaryValue: PropTypes.number.isRequired
+import Rating from 'react-rating';
+// isTorment: PropTypes.bool,
+// label: PropTypes.string.isRequired,
+// onChangedCallback: PropTypes.func.isRequired,
+// permanentValue: PropTypes.number.isRequired,
+// temporaryValue: PropTypes.number.isRequired
+
 describe('<TemporaryPermanentTracker />', () => {
-  it('renders', () => {
+  it('should render given required props', () => {
     let componentUnderTest =
       <TemporaryPermanentTracker
         label='test'
@@ -17,7 +18,8 @@ describe('<TemporaryPermanentTracker />', () => {
         permanentValue={10}
         temporaryValue={10}
         />;
-    // let wrapper = mount(componentUnderTest);
-    // expect(wrapper).To
+    let wrapper = shallow(componentUnderTest);
+
+    expect(wrapper.find('h5')).toHaveText('test');
   });
 });
