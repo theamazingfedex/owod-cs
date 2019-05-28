@@ -7,6 +7,7 @@ import DottedLabelInput from '../../components/common/DottedLabelInput';
 import ClearLocalStorageButton from '../../components/common/ClearLocalStorageButton';
 import { demonLocalStorageId } from '../../components/common/LocalStorageIds';
 import TemporaryPermanentTracker from '../../components/common/TemporaryPermanentTracker';
+import MeritOrFlaw from '../../components/demon/MeritOrFlaw';
 
 class DemonTheFallen extends Component {
   constructor(props) {
@@ -42,14 +43,13 @@ class DemonTheFallen extends Component {
     this.setState({advantages: {...this.state.advantages, backgrounds: backgrounds}});
   }
 
-  meritChangedCallback(index) {
-    return (value) => {
-      let merits = this.state.merits.slice(0);
-      if (value.length === 0) {
-        merits.splice(index, 1);
-      } else {
-        merits[index].name = value;
-      }
+  meritChangedCallback(value) {
+    let merits = this.state.merits.slice(0);
+    console.log('meritsOnChanged: ', merits);
+    if (value.length === 0) {
+      merits.splice(value.index, 1);
+    } else {
+      merits[value.index] = value;
     }
   }
 
@@ -185,17 +185,17 @@ class DemonTheFallen extends Component {
         </div>
         <hr />
         <div className='merits-faith-health'>
-          <div className='merits'>
+          <div className='merits col'>
             { /* TODO: fix merits not sticking with the flexbox */}
             <h5>Merits and Flaws</h5>
             {
               this.state.merits.map((merit, idx) => {
-                return <LabelInput key={idx} initialValue={merit.name || ''} displayLabel={merit.type || ''} onChangedCallback={this.meritChangedCallback(idx)}/>
+                return <MeritOrFlaw key={idx} index={idx} data={merit} onChangedCallback={this.meritChangedCallback}/>
               })
             }
-            <LabelInput initialValue='flaw' displayLabel='Flaws' onChangedCallback={this.meritChangedCallback(this.state.merits.length)}/>
+            <MeritOrFlaw index={this.state.merits.length || 0} data={{name: '', cost: 0}} onChangedCallback={this.meritChangedCallback}/>
           </div>
-          <div className='faith-torment-willpower'>
+          <div className='faith-torment-willpower col'>
             <div className='faith'>
               <TemporaryPermanentTracker label='Faith' permanentValue={this.state.faith.permanent} temporaryValue={this.state.faith.temporary} onChangedCallback={(value) => this.setState({ faith: { permanent: value.permanent, temporary: value.temporary } })} />
             </div>
@@ -206,21 +206,16 @@ class DemonTheFallen extends Component {
               <TemporaryPermanentTracker label='Willpower' permanentValue={this.state.willpower.permanent} temporaryValue={this.state.willpower.temporary} onChangedCallback={(value) => this.setState({ willpower: { permanent: value.permanent, temporary: value.temporary } })} />
             </div>
           </div>
-          <div className='health'>
+          <div className='health col'>
             <h5>Health</h5>
             <LabelInput initialValue='healthy' displayLabel='Health' onChangedCallback={value => console.log('healthchanged: ', value)}/>
           </div>
         </div>
         <style jsx>{`
-          .merits-faith-health {
-            display: flex;
-            justify-content: space-around;
-          }
           .health, .merits {
-            display: flex;
-            flex-direction: column;
             margin-top: 20px;
             flex-grow: 1;
+            margin-right:20px;
           }
           .faith-torment-willpower {
             flex-grow: 1.5;
@@ -228,7 +223,7 @@ class DemonTheFallen extends Component {
             display: flex;
             flex-direction: column;
           }
-          .attributes, .abilities, .advantages {
+          .attributes, .abilities, .advantages, .merits-faith-health {
             display: flex;
             justify-content: space-around;
             width: 80%;
