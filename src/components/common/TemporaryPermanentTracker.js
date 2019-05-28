@@ -107,11 +107,11 @@ class TemporaryPermanentTracker extends Component {
 }
 
 TemporaryPermanentTracker.propTypes = {
+  isTorment: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  permanentValue: PropTypes.number.isRequired,
-  temporaryValue: PropTypes.number.isRequired,
   onChangedCallback: PropTypes.func.isRequired,
-  isTorment: PropTypes.bool
+  permanentValue: PropTypes.number.isRequired,
+  temporaryValue: PropTypes.number.isRequired
 };
 
 export default TemporaryPermanentTracker;
