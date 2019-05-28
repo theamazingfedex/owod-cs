@@ -51,7 +51,7 @@ class LabelInput extends Component {
             width: 204px;
             height: 24px;
             background: #EEE;
-            padding: 1px 2px;
+            padding-top: 4px;
             margin-bottom: 26px;
           }
           p {
@@ -60,6 +60,10 @@ class LabelInput extends Component {
             height: 24px;
             width: 200px;
             margin-top: 0;
+          }
+          * {
+            font-family: 'DEMON_SKER';
+            font-size: 24px;
           }
         `}</style>
       </div>
