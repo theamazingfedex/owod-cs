@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage --config=jest.config.js",
     "build": "npx npmvet -r ci -s && webpack --mode=production",
     "start": "serve -s dist",
     "dev": "webpack-dev-server --hot",
