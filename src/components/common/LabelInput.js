@@ -27,6 +27,7 @@ class LabelInput extends Component {
     this.setState({ isActive: !this.state.isActive });
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='labelInput'>

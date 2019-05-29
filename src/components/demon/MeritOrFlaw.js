@@ -55,6 +55,7 @@ class MeritOrFlaw extends Component {
     this.setState({isLabelActive: false});
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='container'>

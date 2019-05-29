@@ -38,16 +38,18 @@ class TemporaryPermanentTracker extends Component {
     }
   }
 
+  /* istanbul ignore next */
   increaseDotMargins(style) {
     return {...style, marginRight: 10};
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='temp-permanent-tracker'>
         <div className='header'>
           <div className='arrow-left'></div>
-          <h5>{this.props.label}</h5>
+          <h5 className='label'>{this.props.label}</h5>
           <div className='arrow-right'></div>
         </div>
         <div className='ratings'>

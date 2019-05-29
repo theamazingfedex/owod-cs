@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "testwatch": "npm run test -- --coverage --watch",
+    "testwatch": "npm run test -- --watch",
     "build": "webpack --mode=production",
     "start": "serve -s dist",
     "dev": "webpack-dev-server --hot",
