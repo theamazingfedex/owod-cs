@@ -46,6 +46,7 @@ export default class SheetPicker extends Component {
     this.setState({ savedDemonState: state });
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='sheet-picker'>

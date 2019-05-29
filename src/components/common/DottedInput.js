@@ -30,6 +30,7 @@ class DottedInput extends Component {
     }
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='dotted-input'>

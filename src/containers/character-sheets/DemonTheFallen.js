@@ -54,6 +54,7 @@ class DemonTheFallen extends Component {
     this.setState({merits: merits});
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='character-sheet demon'>
