@@ -1,10 +1,5 @@
 <template>
-  <v-layout flex justify-center class="ma-4">
-    <v-flex
-      xs12
-      md4
-    >This is the homepage. Maybe put a dashboard here (with list of saved characters? etc.)</v-flex>
-  </v-layout>
+  <p>This is the homepage. Maybe put a dashboard here (with list of saved characters? etc.)</p>
 </template>
 
 <script lang="ts">

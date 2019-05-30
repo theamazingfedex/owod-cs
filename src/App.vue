@@ -1,22 +1,9 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer app fixed v-model="primaryDrawer"></v-navigation-drawer>
-    <v-toolbar app>
-      <v-toolbar-side-icon @click="primaryDrawer = !primaryDrawer"></v-toolbar-side-icon>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>OWOD</span>
-        <span class="font-weight-light">Character designer</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn flat :href="githubUrl" target="_blank">
-        <span class="mr-2">Github</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-      <v-select></v-select>
-    </v-toolbar>
-    <v-content>
+    <Header/>
+    <v-layout>
       <router-view/>
-    </v-content>
+    </v-layout>
     <v-footer app fixed inset class="pa-3">
       owod-cs vueJS Implementation
       <v-spacer/>
@@ -32,16 +19,14 @@ html {
 </style>
 
 <script lang="ts">
+import Header from '@/components/Header.vue';
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
+@Component({
+  components: { Header },
+})
 export default class App extends Vue {
   public name: string = 'App';
   public copyYear: number = new Date().getFullYear();
-  public primaryDrawer: boolean = false;
-  public githubUrl: string = 'https://github.com/theamazingfedex/owod-cs';
-  public mounted() {
-    this.primaryDrawer = false;
-  }
 }
 </script>
