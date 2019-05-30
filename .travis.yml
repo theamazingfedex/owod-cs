@@ -6,10 +6,13 @@ branches:
   only:
     - master
     - dev
-script: npm run test && codecov
+script: npm run test && codecov && sonarscanner
 before_install:
 - rm -rf node_modules
 - npm install -g greenkeeper-lockfile codecov
 install: npm install
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
+addons:
+  sonarcloud:
+    organization: "theamazingfedex-github"
