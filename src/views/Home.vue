@@ -1,17 +1,15 @@
 <template>
-  <v-layout>
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <v-layout flex justify-center class="ma-4">
+    <v-flex
+      xs12
+      md4
+    >This is the homepage. Maybe put a dashboard here (with list of saved characters? etc.)</v-flex>
   </v-layout>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
+@Component({})
 export default class Home extends Vue {}
 </script>

@@ -8,8 +8,8 @@
         <span class="font-weight-light">Character designer</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="mr-2">Latest Release</span>
+      <v-btn flat :href="githubUrl" target="_blank">
+        <span class="mr-2">Github</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-toolbar>
@@ -38,6 +38,7 @@ export default class App extends Vue {
   public name: string = 'App';
   public copyYear: number = new Date().getFullYear();
   public primaryDrawer: boolean = false;
+  public githubUrl: string = 'https://github.com/theamazingfedex/owod-cs';
   public mounted() {
     this.primaryDrawer = false;
   }
