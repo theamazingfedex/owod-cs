@@ -12,6 +12,7 @@
         <span class="mr-2">Github</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
+      <v-select></v-select>
     </v-toolbar>
     <v-content>
       <router-view/>
