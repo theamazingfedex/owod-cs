@@ -13,6 +13,11 @@ A digital character sheet for the Old World of Darkness pen and paper games.
 
 Available in production at [owod.herokuapp.com](owod.herokuapp.com)
 
+## Contributing
+ * Do not push code directly to master, it is a protected branch.
+ * Create a new branch based off of master, then submit pull requests with changes.
+ * Branches with failing tests won't be merged until they're fixed.
+
 ## Project setup
 ```
 yarn install
@@ -40,11 +45,6 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## Contributing
- * Do not push code directly to master, it is a protected branch.
- * Create a new branch based off of master, then submit pull requests with changes.
- * Branches with failing tests won't be merged until they're fixed.
 
 ## Testing
  * TBD - Jest/Mocha + Enzyme/Nightwatch
