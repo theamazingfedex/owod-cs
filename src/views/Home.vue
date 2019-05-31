@@ -1,5 +1,9 @@
 <template>
-  <p>This is the homepage. Maybe put a dashboard here (with list of saved characters? etc.)</p>
+  <v-layout fill-height wrap flex justify-center class="mx-auto">
+    <v-flex>
+      <v-content>Choose a character sheet to begin...</v-content>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts">
