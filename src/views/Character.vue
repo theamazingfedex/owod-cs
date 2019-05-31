@@ -13,5 +13,5 @@ import CharacterSheet from "@/components/CharacterSheet.vue"; // @ is an alias t
     CharacterSheet,
   },
 })
-export default class Home extends Vue {}
+export default class Character extends Vue {}
 </script>

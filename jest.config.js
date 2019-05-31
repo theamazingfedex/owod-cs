@@ -1,4 +1,18 @@
 module.exports = {
+  collectCoverage: true,
+  clearMocks: true,
+  collectCoverageFrom: [
+    "\\\\src\\\\"
+  ],
+  coverageDirectory: "coverage",
+  coveragePathIgnorePatterns: [
+    "\\\\node_modules\\\\"
+  ],
+  coverageReporters: [
+    "json",
+    "lcov"
+  ],
+  testEnvironment: "node",
   moduleFileExtensions: [
     'js',
     'jsx',

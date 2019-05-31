@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <Header/>
+    <Header :sheets="sheetOptions"/>
     <v-layout>
       <router-view/>
     </v-layout>
@@ -19,14 +19,21 @@ html {
 </style>
 
 <script lang="ts">
-import Header from '@/components/Header.vue';
-import { Component, Vue } from 'vue-property-decorator';
+import Header from "@/components/Header.vue";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({
   components: { Header },
 })
 export default class App extends Vue {
-  public name: string = 'App';
+  public name: string = "App";
   public copyYear: number = new Date().getFullYear();
+  public sheetOptions: any[] = [
+    { id: 0, label: "Demon the Fallen", route: "demon" },
+    { id: 1, label: "Mage the Ascension", route: "mage" },
+    { id: 2, label: "Changeling", route: "changeling" },
+    { id: 3, label: "Wraith", route: "wraith" },
+    { id: 4, label: "Hunter: The Reckoning", route: "hunter" },
+  ];
 }
 </script>
