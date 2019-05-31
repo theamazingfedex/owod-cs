@@ -16,7 +16,8 @@
       "webpack-env",
       "vuetify",
       "mocha",
-      "chai"
+      "chai",
+      "jest"
     ],
     "paths": {
       "*": [
