@@ -87,7 +87,7 @@ const demonInitialState = {
     permanent: 5,
     temporary: 5
   },
-  health: 7,
+  health: -1,
   experience: 0,
   inventory: []
 }

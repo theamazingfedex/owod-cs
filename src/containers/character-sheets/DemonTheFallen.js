@@ -7,7 +7,17 @@ import DottedLabelInput from '../../components/common/DottedLabelInput';
 import ClearLocalStorageButton from '../../components/common/ClearLocalStorageButton';
 import { demonLocalStorageId } from '../../components/common/LocalStorageIds';
 import TemporaryPermanentTracker from '../../components/common/TemporaryPermanentTracker';
+import HealthTracker from '../../components/common/HealthTracker';
 import MeritOrFlaw from '../../components/demon/MeritOrFlaw';
+
+const healthEntries = [
+  {label: 'bruised', demerit: 0},
+  {label: 'hurt', demerit: 1},
+  {label: 'injured', demerit: 1},
+  {label: 'mauled', demerit: 2},
+  {label: 'crippled', demerit: 2},
+  {label: 'incapacitated', demerit: 0}
+];
 
 class DemonTheFallen extends Component {
   constructor(props) {
@@ -45,7 +55,6 @@ class DemonTheFallen extends Component {
 
   meritChangedCallback(value) {
     let merits = this.state.merits.slice(0);
-    console.log('meritsOnChanged: ', merits);
     if (value.length === 0) {
       merits.splice(value.index, 1);
     } else {
@@ -210,18 +219,20 @@ class DemonTheFallen extends Component {
           </div>
           <div className='health col'>
             <h5>Health</h5>
-            <LabelInput initialValue='healthy' displayLabel='Health' onChangedCallback={value => console.log('healthchanged: ', value)}/>
+            <HealthTracker healthEntries={healthEntries} currentValue={this.state.health} onChangedCallback={value => this.setState({health: value})} />
           </div>
         </div>
         <style jsx>{`
           .health, .merits {
             margin-top: 20px;
             min-width: 300px;
-            margin-right:20px;
+            margin-right: 20px;
+            margin-left: 10px;
           }
           .faith-torment-willpower {
             display: flex;
             flex-direction: column;
+            margin
           }
           .attributes, .abilities, .advantages, .merits-faith-health {
             display: flex;
