@@ -14,7 +14,9 @@
     "dev": "webpack-dev-server --hot",
     "checkUpdates": "npx npm-check-updates",
     "applyUpdates": "npx npm-check-updates -u",
-    "vetDependencies": "npx npmvet -r blessed"
+    "vetDependencies": "npx npmvet -r blessed",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Daniel Wood (daniel.a.wood.jr@gmail.com)",
   "license": "MIT",
@@ -51,6 +53,8 @@
     "react-rating": "1.7.2",
     "react-select": "3.0.3",
     "serve": "11.0.0",
-    "styled-jsx": "3.2.1"
-  }
+    "styled-jsx": "3.2.1",
+    "snyk": "^1.192.4"
+  },
+  "snyk": true
 }
