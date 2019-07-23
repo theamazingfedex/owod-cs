@@ -69,7 +69,8 @@ const demonInitialState = {
     }
   },
   merits: [
-    { merit: 'Great Liar', type: 'something', cost: 2 }
+    { name: 'Great Liar', cost: 2 },
+    { name: 'Revoked License', cost: -2 }
   ],
   derangements: [],
   otherTraits: [{ name: 'someTrait', value: 1 }],
@@ -80,13 +81,13 @@ const demonInitialState = {
   },
   torment: {
     permanent: 4,
-    temporary: 0
+    temporary: 1
   },
   willpower: {
     permanent: 5,
     temporary: 5
   },
-  health: 7,
+  health: -1,
   experience: 0,
   inventory: []
 }

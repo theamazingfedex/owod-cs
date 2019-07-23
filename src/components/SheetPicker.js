@@ -46,6 +46,7 @@ export default class SheetPicker extends Component {
     this.setState({ savedDemonState: state });
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='sheet-picker'>
@@ -64,8 +65,10 @@ export default class SheetPicker extends Component {
             font-family: 'DEMON_SKER';
             font-size: 24px;
           }
-          h1 {
+          h1, h2 {
             align-self: center;
+            font-weight: normal;
+            font-size: 48px;
           }
           hr {
             color: black;

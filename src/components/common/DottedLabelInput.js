@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Rating from 'react-rating';
-
-const style = {
-  display: 'inline-block',
-  borderRadius: '50%',
-  border: '5px double white',
-  width: 10,
-  height: 10
-};
-
-const emptyStyle = {
-  ...style,
-  backgroundColor: '#CCC'
-};
-
-const fullStyle = {
-  ...style,
-  backgroundColor: 'black'
-};
+import { emptyCircularStyle, fullCircularStyle } from './RatingStyles';
 
 class DottedLabelInput extends Component {
   constructor(props) {
@@ -84,13 +67,13 @@ class DottedLabelInput extends Component {
 
   onRatingHover(value) {
     this.setState({hoveredValue: value});
-    console.log('hoveredValue: ', this.state.hoveredValue);
   }
 
   activateInput() {
     this.setState({ isActive: !this.state.isActive });
   }
 
+  /* istanbul ignore next */
   render() {
     return (
       <div className='labelInput'>
@@ -100,7 +83,7 @@ class DottedLabelInput extends Component {
             : <p className='textValue' onClick={this.activateInput} ref={this.textView}>{this.props.displayLabel}</p>
         }
         <div className='spacing'></div>
-        <span className='rating'><Rating initialRating={this.state.value} emptySymbol={emptyStyle} fullSymbol={fullStyle} placeholderSymbol={fullStyle} onClick={this.onRatingChange} onHover={this.onRatingHover}/></span>
+        <span className='rating'><Rating initialRating={this.state.value} emptySymbol={emptyCircularStyle} fullSymbol={fullCircularStyle} placeholderSymbol={fullCircularStyle} onClick={this.onRatingChange} onHover={this.onRatingHover}/></span>
         <style jsx>{`
           .active {
             display: block;
@@ -116,7 +99,7 @@ class DottedLabelInput extends Component {
             width: 204px;
             height: 24px;
             background: #EEE;
-            padding: 1px 2px;
+            padding-top: 4px;
             margin-bottom: 26px;
           }
           p {
@@ -139,6 +122,10 @@ class DottedLabelInput extends Component {
           .dotted-input {
             display: flex;
             width: 250px;
+          }
+          * {
+            font-family: 'DEMON_SKER';
+            font-size: 24px;
           }
         `}</style>
       </div>

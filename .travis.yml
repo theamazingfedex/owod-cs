@@ -1,10 +1,19 @@
 language: node_js
+dist: trusty
 node_js:
-  - "10"
-  - "12"
+  - 'lts/*'
+  - 'node'
+branches:
+  only:
+    - master
+    - dev
+script: npm run test && codecov && sonar-scanner
 before_install:
-# package-lock.json was introduced in npm@5
-- npm install -g greenkeeper-lockfile
+- rm -rf node_modules
+- npm install -g greenkeeper-lockfile codecov sonar-scanner
 install: npm install
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
+addons:
+  sonarcloud:
+    organization: "theamazingfedex-github"
